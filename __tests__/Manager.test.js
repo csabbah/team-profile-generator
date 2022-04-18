@@ -13,12 +13,6 @@ test('Creates Manager object with all valid values', () => {
   expect(manager1.officeNumber).toEqual(expect.any(Number));
 });
 
-test('Unique ID generated', () => {
-  // This random num generator is the same one used from the parent class so...
-  // we test this here to ensure it returns a number each time
-  expect(Math.ceil(Math.random(0) * 100000)).toEqual(expect.any(Number));
-});
-
 test('Manager method returns valid office number', () => {
   expect(manager1.getOfficeNumber()).toEqual(expect.any(Number));
 });

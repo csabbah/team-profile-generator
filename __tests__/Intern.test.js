@@ -19,12 +19,6 @@ test('Creates intern object with all valid values', () => {
   expect(intern1.school).toEqual(expect.any(String));
 });
 
-test('Unique ID generated', () => {
-  // This random num generator is the same one used from the parent class so...
-  // we test this here to ensure it returns a number each time
-  expect(Math.ceil(Math.random(0) * 100000)).toEqual(expect.any(Number));
-});
-
 test('Intern method returns school', () => {
   expect(intern1.getSchool()).toEqual(expect.any(String));
 });
