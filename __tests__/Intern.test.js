@@ -1,26 +1,17 @@
 const Intern = require('../lib/Intern.js');
 
-function generateId() {
-  return Math.ceil(Math.random(0) * 10000);
-}
-
 const intern1 = new Intern(
   'Carlos',
-  generateId(),
+  0,
   'csabbah@ryerson.ca',
   'Intern',
   'Ryerson'
 );
 
-const intern2 = new Intern(
-  'Carlos',
-  generateId(),
-  'csabbah@ryerson.ca',
-  '',
-  'Ryerson'
-);
+// Declare this object to test if 'Employee' is chosen as the default role if role is empty
+const intern2 = new Intern('Carlos', 0, 'csabbah@ryerson.ca', '', 'Ryerson');
 
-test('Creates intern object', () => {
+test('Creates intern object with all valid values', () => {
   expect(intern1.name).toEqual(expect.any(String));
   expect(intern1.id).toEqual(expect.any(Number));
   expect(intern1.email).toEqual(expect.stringContaining('@'));
@@ -29,14 +20,16 @@ test('Creates intern object', () => {
 });
 
 test('Unique ID generated', () => {
-  expect(generateId()).toEqual(expect.any(Number));
+  // This random num generator is the same one used from the parent class so...
+  // we test this here to ensure it returns a number each time
+  expect(Math.ceil(Math.random(0) * 10000)).toEqual(expect.any(Number));
 });
 
 test('Intern method returns school', () => {
   expect(intern1.getSchool()).toEqual(expect.any(String));
 });
 
-test('Intern method returns role', () => {
+test('Intern method returns correct role', () => {
   expect(intern1.getRole()).toEqual('Intern');
 });
 
