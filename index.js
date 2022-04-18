@@ -5,14 +5,14 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 function initializeProfiles() {
-  const intern1 = new Intern(
-    'Carlos',
-    0, // We can either enter 0 or any other number, regardless, a random number will be added (from parent class)
-    'csabbah@ryerson.ca',
-    'Intern', // < If this is blank, use 'Employee' as the default role
-    'Ryerson'
-  );
-  console.log(intern1);
+  // const intern1 = new Intern(
+  //   'Carlos',
+  //   0, // We can either enter 0 or any other number, regardless, a random number will be added (from parent class)
+  //   'csabbah@ryerson.ca',
+  //   'Intern', // < If this is blank, use 'Employee' as the default role
+  //   'Ryerson'
+  // );
+  // console.log(intern1);
   // intern1.getName();
   // intern1.getSchool(); // This executes the intern method that simply console logs the school
   // intern1.getRole(); // This executes the intern method that simply console logs the school
@@ -34,7 +34,7 @@ function initializeProfiles() {
   //   0,
   //   'grace@gmail.ca',
   //   'Manager',
-  //   '124'
+  //   124
   // );
   // manager1.getId();
   // manager1.getOfficeNumber();
