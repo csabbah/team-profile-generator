@@ -6,7 +6,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const promptInitial = () => {
+const promptManager = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -60,149 +60,161 @@ const promptInitial = () => {
         }
       },
     },
-    {
-      type: 'checkbox',
-      name: 'nextSteps',
-      message: 'Please choose from one of the following:',
-      choices: ['Add an Engineer', 'Add an Intern', 'Finish building team'],
-    },
   ]);
+};
+
+// Path prompt - Based on what's chosen here, either new employee or generate the HTML file
+const nextPrompt = () => {
+  return inquirer
+    .prompt([
+      {
+        type: 'checkbox',
+        name: 'nextSteps',
+        message: 'Please choose from one of the following:',
+        choices: ['Add an Engineer', 'Add an Intern', 'Finish building team'],
+      },
+    ])
+    .then((chosenStep) => {
+      if (chosenStep.nextSteps == 'Add an Engineer') {
+        console.log('engineer chosen');
+        promptEngineer();
+      } else if (chosenStep.nextSteps == 'Add an Intern') {
+        console.log('intern chosen');
+        promptIntern();
+      } else {
+        // *** ADD CODE **** Build the team profiles here
+        console.log('build team profiles chosen');
+      }
+    });
 };
 
 const promptEngineer = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'engineerName',
-      message: 'What is your engineers name?',
-      validate: (engineerNameInput) => {
-        if (engineerNameInput) {
-          return true;
-        } else {
-          console.log('You need to enter a name!');
-          return false;
-        }
+  return inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'engineerName',
+        message: 'What is your engineers name?',
+        validate: (engineerNameInput) => {
+          if (engineerNameInput) {
+            return true;
+          } else {
+            console.log('You need to enter a name!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'engineerId',
-      message: 'Enter employee ID for the engineer:',
-      validate: (engineerIdInput) => {
-        if (engineerIdInput) {
-          return true;
-        } else {
-          console.log('You need to enter an ID number!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'engineerId',
+        message: 'Enter employee ID for the engineer:',
+        validate: (engineerIdInput) => {
+          if (engineerIdInput) {
+            return true;
+          } else {
+            console.log('You need to enter an ID number!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'engineerEmail',
-      message: 'Enter email address for the engineer:',
-      validate: (engineerEmailInput) => {
-        if (engineerEmailInput) {
-          return true;
-        } else {
-          console.log('You need to enter an email!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'engineerEmail',
+        message: 'Enter email address for the engineer:',
+        validate: (engineerEmailInput) => {
+          if (engineerEmailInput) {
+            return true;
+          } else {
+            console.log('You need to enter an email!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'githubUser',
-      message: 'Enter the engineers github username:',
-      validate: (githubInput) => {
-        if (githubInput) {
-          return true;
-        } else {
-          console.log('You need to enter a username!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'githubUser',
+        message: 'Enter the engineers github username:',
+        validate: (githubInput) => {
+          if (githubInput) {
+            return true;
+          } else {
+            console.log('You need to enter a username!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'checkbox',
-      name: 'nextSteps',
-      message: 'Please choose from one of the following:',
-      choices: [
-        'Add another Engineer',
-        'Add an Intern',
-        'Finish building team',
-      ],
-    },
-  ]);
+    ])
+    .then((Engineer) => {
+      //  **** ADD CODE ***** Push the engineer to the global array here
+      console.log(Engineer);
+      nextPrompt();
+    });
 };
 
 const promptIntern = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'internName',
-      message: 'What is your interns name?',
-      validate: (internNameInput) => {
-        if (internNameInput) {
-          return true;
-        } else {
-          console.log('You need to enter a name!');
-          return false;
-        }
+  return inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'internName',
+        message: 'What is your interns name?',
+        validate: (internNameInput) => {
+          if (internNameInput) {
+            return true;
+          } else {
+            console.log('You need to enter a name!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'internId',
-      message: 'Enter employee ID for the intern:',
-      validate: (internIdInput) => {
-        if (internIdInput) {
-          return true;
-        } else {
-          console.log('You need to enter an ID number!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'internId',
+        message: 'Enter employee ID for the intern:',
+        validate: (internIdInput) => {
+          if (internIdInput) {
+            return true;
+          } else {
+            console.log('You need to enter an ID number!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'internEmail',
-      message: 'Enter email address for the intern:',
-      validate: (internEmailInput) => {
-        if (internEmailInput) {
-          return true;
-        } else {
-          console.log('You need to enter an email!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'internEmail',
+        message: 'Enter email address for the intern:',
+        validate: (internEmailInput) => {
+          if (internEmailInput) {
+            return true;
+          } else {
+            console.log('You need to enter an email!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'school',
-      message: 'Enter the interns school:',
-      validate: (schoolInput) => {
-        if (schoolInput) {
-          return true;
-        } else {
-          console.log('You need to enter a school!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'school',
+        message: 'Enter the interns school:',
+        validate: (schoolInput) => {
+          if (schoolInput) {
+            return true;
+          } else {
+            console.log('You need to enter a school!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'checkbox',
-      name: 'nextSteps',
-      message: 'Please choose from one of the following:',
-      choices: [
-        'Add an Engineer',
-        'Add another Intern',
-        'Finish building team',
-      ],
-    },
-  ]);
+    ])
+    .then((Intern) => {
+      //  **** ADD CODE ***** Push the Intern to the global array here
+      console.log(Intern);
+      nextPrompt();
+    });
 };
 
+// Builds the class objects for each employee
 function buildTeamProfile() {
   // const intern1 = new Intern(
   //   'Carlos',
@@ -243,21 +255,10 @@ function buildTeamProfile() {
   // employee.getRole();
 }
 
-promptInitial().then((initialData) => {
-  if (initialData.nextSteps == 'Add an Engineer') {
-    promptEngineer().then((engineerData) => {
-      console.log(engineerData, initialData);
-    });
-  } else if (initialData.nextSteps == 'Add an Intern') {
-    promptIntern().then((internData) => {
-      console.log(internData, initialData);
-    });
-  } else {
-    console.log(initialData);
-  }
+promptManager().then((managerData) => {
+  // **** ADD CODE ***** Push the manager to the global array here
+  nextPrompt();
 });
-
-// buildTeamProfile();
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information
