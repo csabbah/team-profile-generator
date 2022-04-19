@@ -95,7 +95,8 @@ header h1 {
   opacity: 0.4;
 }
 #body-container p,
-#body-container a {
+#body-email,
+#body-info {
   font-size: 11px;
   padding-left: 10px;
   padding-top: 10px;

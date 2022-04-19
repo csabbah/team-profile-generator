@@ -34,7 +34,9 @@ module.exports = (employeeArr) => {
             <div id="body-container">
               <p id="ID">ID: ${id}</p>
               <hr />
-              <p id="body-email">Email: ${email}</p>
+              <p id="body-email">
+                <a href="mailto:${email}">${email}</a>
+              </p>
               <hr />
               <p id="body-info">Office Number: ${officeNumber}</p>
             </div>
@@ -59,11 +61,18 @@ module.exports = (employeeArr) => {
             <div id="body-container">
               <p id="ID">ID: ${engineer.id}</p>
               <hr />
-              <p id="body-email">Email: ${engineer.email}</p>
+              <p id="body-email">
+                <a href="mailto:${engineer.email}">${engineer.email}</a>
+              </p>
               <hr />
-              <a id="body-info" href="https://github.com/${engineer.github}"
-               target="_blank" rel="noopener noreferrer" >Github link</a
-              >
+              <p id="body-info">
+                <a
+                  href="https://github.com/${engineer.github}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Github link</a
+                >
+              </p>
             </div>
           </div>
         </div>`;
@@ -88,7 +97,9 @@ module.exports = (employeeArr) => {
             <div id="body-container">
               <p id="ID">ID: ${intern.id}</p>
               <hr />
-              <p id="body-email">Email: ${intern.email}</p>
+              <p id="body-email">
+                <a href="mailto:${intern.email}">${intern.email}</a>
+              </p>
               <hr />
               <p id="body-info">School: ${intern.school}</p>
             </div>
