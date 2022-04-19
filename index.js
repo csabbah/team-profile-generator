@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const generatePage = require('./src/page-template');
 
-const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -229,7 +228,7 @@ const promptIntern = () => {
     });
 };
 
-// Path prompt - Based on what's chosen here, either new employee or generate the HTML file
+// Based on what's chosen here, either add new employee or generate the HTML file
 const nextPrompt = () => {
   return inquirer
     .prompt([

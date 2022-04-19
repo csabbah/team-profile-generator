@@ -1,7 +1,4 @@
-module.exports = (employeeArr) => {
-  const { name, id, email, role, officeNumber } = employeeArr.manager;
 
-  return `
  <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,83 +17,74 @@ module.exports = (employeeArr) => {
         <div id="employee-card">
           <div id="head-container">
             <div id="card-head">
-              <h3>${name}</h3>
+              <h3>1</h3>
               <div id="role">
                 <img
                   src="../dist/images/manager-icon.png"
                   alt="Icon of a coffee cup"
                 />
-                <h4>${role}</h4>
+                <h4>Manager</h4>
               </div>
             </div>
           </div>
           <div id="card-body">
             <div id="body-container">
-              <p id="ID">ID: ${id}</p>
+              <p id="ID">ID: 1</p>
               <hr />
-              <p id="body-email">Email: ${email}</p>
+              <p id="body-email">Email: 1</p>
               <hr />
-              <p id="body-info">Office Number: ${officeNumber}</p>
+              <p id="body-info">Office Number: 1</p>
             </div>
           </div>
         </div>
-        ${employeeArr.engineer
-          .map((engineer) => {
-            return `<div id="employee-card">
+        <div id="employee-card">
           <div id="head-container">
             <div id="card-head">
-              <h3>${engineer.name}</h3>
+              <h3>2</h3>
               <div id="role">
                 <img
                   src="../dist/images/engineer-icon.png"
                   alt="Icon of a gear"
                 />
-                <h4>${engineer.role}</h4>
+                <h4>Engineer</h4>
               </div>
             </div>
           </div>
           <div id="card-body">
             <div id="body-container">
-              <p id="ID">ID: ${engineer.id}</p>
+              <p id="ID">ID: 2</p>
               <hr />
-              <p id="body-email">Email: ${engineer.email}</p>
+              <p id="body-email">Email: 2</p>
               <hr />
-              <p id="body-info">Github: ${engineer.github}</p>
+              <p id="body-info">Github: 2</p>
             </div>
           </div>
-        </div>`;
-          })
-          .join(' ')} 
-        ${employeeArr.intern
-          .map((intern) => {
-            return `<div id="employee-card">
+        </div> <div id="employee-card">
           <div id="head-container">
             <div id="card-head">
-              <h3>${intern.name}</h3>
+              <h3>3</h3>
               <div id="role">
                 <img
-                  src="../dist/images/intern-icon.png"
-                  alt="Icon of a graduation hat"
+                  src="../dist/images/engineer-icon.png"
+                  alt="Icon of a gear"
                 />
-                <h4>${intern.role}</h4>
+                <h4>Engineer</h4>
               </div>
             </div>
           </div>
           <div id="card-body">
             <div id="body-container">
-              <p id="ID">ID: ${intern.id}</p>
+              <p id="ID">ID: 3</p>
               <hr />
-              <p id="body-email">Email: ${intern.email}</p>
+              <p id="body-email">Email: 3</p>
               <hr />
-              <p id="body-info">School: ${intern.school}</p>
+              <p id="body-info">Github: 3</p>
             </div>
           </div>
-        </div>`;
-          })
-          .join(' ')} 
+        </div> 
+         
       </div>
     </main>
   </body>
 </html>
-  `;
-};
+  
