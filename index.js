@@ -253,9 +253,9 @@ const nextPrompt = () => {
 
 // Create the class objects for each employee
 function generateWebpage() {
-  // Then we pass the data into the function that generates the content
+  // Then we pass the array into the function that generates the content
   employeeProfiles = generatePage(employeeArr);
-  // Afterwards, generate the README file using the above generated content
+  // Afterwards generate the HTML file
   fs.writeFile('./dist/Employees.html', employeeProfiles, (err) => {
     if (err) throw new Error(err);
     // Then alert the user the file has been successfully generated
@@ -263,45 +263,6 @@ function generateWebpage() {
       'Your HTML has been created! Check out HTML in this directory to see it!'
     );
   });
-
-  // // ------- ------- ------- ------- ------- ------- ------- ------- -------
-  // const intern1 = new Intern(
-  //   'Carlos',
-  //   0,
-  //   'csabbah@ryerson.ca',
-  //   'Intern', // < If this is blank, use 'Employee' as the default role
-  //   'Ryerson'
-  // );
-  // console.log(intern1);
-  // intern1.getName();
-  // intern1.getSchool(); // This executes the intern method that simply console logs the school
-  // intern1.getRole(); // This executes the intern method that simply console logs the school
-  // // ------- ------- ------- ------- ------- ------- ------- ------- -------
-  // const engineer1 = new Engineer(
-  //   'Niv',
-  //   0,
-  //   'Niv@hotmail.ca',
-  //   'Engineer',
-  //   'Nimran'
-  // );
-  // console.log(engineer1);
-  // engineer1.getEmail();
-  // engineer1.getGithub();
-  // engineer1.getRole();
-  // // ------- ------- ------- ------- ------- ------- ------- ------- -------
-  // const manager1 = new Manager(
-  //   'Grace',
-  //   0,
-  //   'grace@gmail.ca',
-  //   'Manager',
-  //   124
-  // );
-  // manager1.getId();
-  // manager1.getOfficeNumber();
-  // manager1.getRole();
-  // // ------- ------- ------- ------- ------- ------- ------- ------- -------
-  // const employee = new Employee();
-  // employee.getRole();
 }
 
 promptManager().then(nextPrompt);
