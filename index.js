@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const generatePage = require('./src/page-template');
+
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -251,15 +253,16 @@ const nextPrompt = () => {
 
 // Create the class objects for each employee
 function generateWebpage() {
-  console.log(employeeArr.manager);
-  console.log(employeeArr.engineer);
-  console.log(employeeArr.intern);
-
-  // employeeArr.engineer.forEach((engineer) => {
-  // });
-
-  // employeeArr.intern.forEach((intern) => {
-  // });
+  // Then we pass the data into the function that generates the content
+  employeeProfiles = generatePage(employeeArr);
+  // Afterwards, generate the README file using the above generated content
+  fs.writeFile('./dist/index.html', employeeProfiles, (err) => {
+    if (err) throw new Error(err);
+    // Then alert the user the file has been successfully generated
+    console.log(
+      'Your HTML has been created! Check out HTML in this directory to see it!'
+    );
+  });
 
   // // ------- ------- ------- ------- ------- ------- ------- ------- -------
   // const intern1 = new Intern(
@@ -302,11 +305,3 @@ function generateWebpage() {
 }
 
 promptManager().then(nextPrompt);
-
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
