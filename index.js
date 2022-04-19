@@ -6,7 +6,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const employeeArr = { manager: [], engineer: [], intern: [] };
+const employeeArr = { manager: '', engineer: [], intern: [] };
 
 const promptManager = () => {
   return inquirer
@@ -64,31 +64,19 @@ const promptManager = () => {
         },
       },
     ])
-    .then((Manager) => {
-      employeeArr.manager.push(Manager);
-    });
-};
+    .then((managerData) => {
+      const { managerName, managerId, managerEmail, officeNumber } =
+        managerData;
 
-// Path prompt - Based on what's chosen here, either new employee or generate the HTML file
-const nextPrompt = () => {
-  return inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'nextSteps',
-        message: 'Please choose from one of the following:',
-        choices: ['Add an Engineer', 'Add an Intern', 'Finish building team'],
-      },
-    ])
-    .then((chosenStep) => {
-      if (chosenStep.nextSteps == 'Add an Engineer') {
-        promptEngineer();
-      } else if (chosenStep.nextSteps == 'Add an Intern') {
-        promptIntern();
-      } else {
-        // *** ADD CODE **** Build the team profiles here
-        console.log(employeeArr);
-      }
+      const managerObj = new Manager(
+        managerName,
+        managerId,
+        managerEmail,
+        'Manager',
+        officeNumber
+      );
+
+      employeeArr.manager = managerObj;
     });
 };
 
@@ -148,8 +136,20 @@ const promptEngineer = () => {
         },
       },
     ])
-    .then((Engineer) => {
-      employeeArr.engineer.push(Engineer);
+    .then((engineerData) => {
+      const { engineerName, engineerId, engineerEmail, githubUser } =
+        engineerData;
+
+      const engineerObj = new Engineer(
+        engineerName,
+        engineerId,
+        engineerEmail,
+        'Engineer',
+        githubUser
+      );
+
+      employeeArr.engineer.push(engineerObj);
+
       nextPrompt();
     });
 };
@@ -210,14 +210,58 @@ const promptIntern = () => {
         },
       },
     ])
-    .then((Intern) => {
-      employeeArr.intern.push(Intern);
+    .then((internData) => {
+      const { internName, internId, internEmail, school } = internData;
+
+      const internObj = new Intern(
+        internName,
+        internId,
+        internEmail,
+        'Intern',
+        school
+      );
+
+      employeeArr.intern.push(internObj);
+
       nextPrompt();
     });
 };
 
-// Builds the class objects for each employee
-function buildTeamProfile() {
+// Path prompt - Based on what's chosen here, either new employee or generate the HTML file
+const nextPrompt = () => {
+  return inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'nextSteps',
+        message: 'Please choose from one of the following:',
+        choices: ['Add an Engineer', 'Add an Intern', 'Finish building team'],
+      },
+    ])
+    .then((chosenStep) => {
+      if (chosenStep.nextSteps == 'Add an Engineer') {
+        promptEngineer();
+      } else if (chosenStep.nextSteps == 'Add an Intern') {
+        promptIntern();
+      } else {
+        generateWebpage();
+      }
+    });
+};
+
+// Create the class objects for each employee
+function generateWebpage() {
+  console.log(employeeArr.manager);
+  console.log(employeeArr.engineer);
+  console.log(employeeArr.intern);
+
+  // employeeArr.engineer.forEach((engineer) => {
+  // });
+
+  // employeeArr.intern.forEach((intern) => {
+  // });
+
+  // // ------- ------- ------- ------- ------- ------- ------- ------- -------
   // const intern1 = new Intern(
   //   'Carlos',
   //   0,
@@ -258,10 +302,6 @@ function buildTeamProfile() {
 }
 
 promptManager().then(nextPrompt);
-
-// managerData.forEach((employee) => {
-//   console.log(employee);
-// });
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information
