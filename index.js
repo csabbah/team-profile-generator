@@ -6,63 +6,67 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const employeeArr = [];
+const employeeArr = { manager: [], engineer: [], intern: [] };
 
 const promptManager = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'managerName',
-      message: 'What is your team managers name?',
-      validate: (managerNameInput) => {
-        if (managerNameInput) {
-          return true;
-        } else {
-          console.log('You need to enter a name!');
-          return false;
-        }
+  return inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'managerName',
+        message: 'What is your team managers name?',
+        validate: (managerNameInput) => {
+          if (managerNameInput) {
+            return true;
+          } else {
+            console.log('You need to enter a name!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'managerId',
-      message: 'Enter employee ID for the manager:',
-      validate: (managerIdInput) => {
-        if (managerIdInput) {
-          return true;
-        } else {
-          console.log('You need to enter an ID number!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'managerId',
+        message: 'Enter employee ID for the manager:',
+        validate: (managerIdInput) => {
+          if (managerIdInput) {
+            return true;
+          } else {
+            console.log('You need to enter an ID number!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'managerEmail',
-      message: 'Enter email address for the manager:',
-      validate: (managerEmailInput) => {
-        if (managerEmailInput) {
-          return true;
-        } else {
-          console.log('You need to enter an email!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'managerEmail',
+        message: 'Enter email address for the manager:',
+        validate: (managerEmailInput) => {
+          if (managerEmailInput) {
+            return true;
+          } else {
+            console.log('You need to enter an email!');
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: 'input',
-      name: 'officeNumber',
-      message: 'Enter the office number:',
-      validate: (officeNumber) => {
-        if (officeNumber) {
-          return true;
-        } else {
-          console.log('You need to enter an office number!');
-          return false;
-        }
+      {
+        type: 'input',
+        name: 'officeNumber',
+        message: 'Enter the office number:',
+        validate: (officeNumber) => {
+          if (officeNumber) {
+            return true;
+          } else {
+            console.log('You need to enter an office number!');
+            return false;
+          }
+        },
       },
-    },
-  ]);
+    ])
+    .then((Manager) => {
+      employeeArr.manager.push(Manager);
+    });
 };
 
 // Path prompt - Based on what's chosen here, either new employee or generate the HTML file
@@ -145,7 +149,7 @@ const promptEngineer = () => {
       },
     ])
     .then((Engineer) => {
-      employeeArr.push(Engineer);
+      employeeArr.engineer.push(Engineer);
       nextPrompt();
     });
 };
@@ -207,7 +211,7 @@ const promptIntern = () => {
       },
     ])
     .then((Intern) => {
-      employeeArr.push(Intern);
+      employeeArr.intern.push(Intern);
       nextPrompt();
     });
 };
@@ -253,10 +257,11 @@ function buildTeamProfile() {
   // employee.getRole();
 }
 
-promptManager().then((managerData) => {
-  employeeArr.push(managerData);
-  nextPrompt();
-});
+promptManager().then(nextPrompt);
+
+// managerData.forEach((employee) => {
+//   console.log(employee);
+// });
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information
