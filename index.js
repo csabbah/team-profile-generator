@@ -6,6 +6,8 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
+const employeeArr = [];
+
 const promptManager = () => {
   return inquirer.prompt([
     {
@@ -68,7 +70,7 @@ const nextPrompt = () => {
   return inquirer
     .prompt([
       {
-        type: 'checkbox',
+        type: 'list',
         name: 'nextSteps',
         message: 'Please choose from one of the following:',
         choices: ['Add an Engineer', 'Add an Intern', 'Finish building team'],
@@ -76,14 +78,12 @@ const nextPrompt = () => {
     ])
     .then((chosenStep) => {
       if (chosenStep.nextSteps == 'Add an Engineer') {
-        console.log('engineer chosen');
         promptEngineer();
       } else if (chosenStep.nextSteps == 'Add an Intern') {
-        console.log('intern chosen');
         promptIntern();
       } else {
         // *** ADD CODE **** Build the team profiles here
-        console.log('build team profiles chosen');
+        console.log(employeeArr);
       }
     });
 };
@@ -145,8 +145,7 @@ const promptEngineer = () => {
       },
     ])
     .then((Engineer) => {
-      //  **** ADD CODE ***** Push the engineer to the global array here
-      console.log(Engineer);
+      employeeArr.push(Engineer);
       nextPrompt();
     });
 };
@@ -208,8 +207,7 @@ const promptIntern = () => {
       },
     ])
     .then((Intern) => {
-      //  **** ADD CODE ***** Push the Intern to the global array here
-      console.log(Intern);
+      employeeArr.push(Intern);
       nextPrompt();
     });
 };
@@ -256,7 +254,7 @@ function buildTeamProfile() {
 }
 
 promptManager().then((managerData) => {
-  // **** ADD CODE ***** Push the manager to the global array here
+  employeeArr.push(managerData);
   nextPrompt();
 });
 
