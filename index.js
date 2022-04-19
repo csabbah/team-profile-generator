@@ -256,7 +256,7 @@ function generateWebpage() {
   // Then we pass the data into the function that generates the content
   employeeProfiles = generatePage(employeeArr);
   // Afterwards, generate the README file using the above generated content
-  fs.writeFile('./dist/index.html', employeeProfiles, (err) => {
+  fs.writeFile('./dist/Employees.html', employeeProfiles, (err) => {
     if (err) throw new Error(err);
     // Then alert the user the file has been successfully generated
     console.log(

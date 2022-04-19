@@ -1,13 +1,6 @@
 module.exports = (employeeArr) => {
   const { name, id, email, role, officeNumber } = employeeArr.manager;
 
-  // employeeArr.engineer.forEach((engineer) => {
-  //   console.log(engineer.name);
-  // });
-
-  // employeeArr.intern.forEach((intern) => {
-  // });
-
   return `
  <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +23,7 @@ module.exports = (employeeArr) => {
               <h3>${name}</h3>
               <div id="role">
                 <img
-                  src="../129-1293351_coffee-cup-icon-coffee-cup-icon-white.png"
+                  src="../dist/images/manager-icon.png"
                   alt="Icon of a coffee cup"
                 />
                 <h4>${role}</h4>
@@ -56,8 +49,8 @@ module.exports = (employeeArr) => {
               <h3>${engineer.name}</h3>
               <div id="role">
                 <img
-                  src="../129-1293351_coffee-cup-icon-coffee-cup-icon-white.png"
-                  alt=""
+                  src="../dist/images/engineer-icon.png"
+                  alt="Icon of a gear"
                 />
                 <h4>${engineer.role}</h4>
               </div>
@@ -82,8 +75,8 @@ module.exports = (employeeArr) => {
               <h3>${intern.name}</h3>
               <div id="role">
                 <img
-                  src="../129-1293351_coffee-cup-icon-coffee-cup-icon-white.png"
-                  alt=""
+                  src="../dist/images/intern-icon.png"
+                  alt="Icon of a graduation hat"
                 />
                 <h4>${intern.role}</h4>
               </div>
