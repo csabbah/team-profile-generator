@@ -94,9 +94,17 @@ header h1 {
 #body-container hr {
   opacity: 0.4;
 }
-#body-container p {
-  font-size: 10px;
+#body-container p,
+#body-container a {
+  font-size: 11px;
   padding-left: 10px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 13px;
+}
+
+#body-info:hover,
+#body-email:hover,
+#ID:hover {
+  background-color: rgb(229, 229, 229);
+  transition: 0.1s all ease-in-out;
 }

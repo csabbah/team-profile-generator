@@ -61,7 +61,9 @@ module.exports = (employeeArr) => {
               <hr />
               <p id="body-email">Email: ${engineer.email}</p>
               <hr />
-              <p id="body-info">Github: ${engineer.github}</p>
+              <a id="body-info" href="https://github.com/${engineer.github}"
+               target="_blank" rel="noopener noreferrer" >Github link</a
+              >
             </div>
           </div>
         </div>`;
