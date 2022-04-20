@@ -10,6 +10,8 @@ const Manager = require('./lib/Manager');
 const employeeArr = { manager: '', engineer: [], intern: [] };
 
 const promptManager = () => {
+  console.log('\n\n--- Manager ---');
+
   return inquirer
     .prompt([
       {
@@ -82,6 +84,7 @@ const promptManager = () => {
 };
 
 const promptEngineer = () => {
+  console.log('\n\n--- Engineer ---');
   return inquirer
     .prompt([
       {
@@ -156,6 +159,8 @@ const promptEngineer = () => {
 };
 
 const promptIntern = () => {
+  console.log('\n\n--- Intern ---');
+
   return inquirer
     .prompt([
       {
