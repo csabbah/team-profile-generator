@@ -26,7 +26,7 @@ This application will generate a team profile HTML webpage using node.js based o
 git clone
 ```
 
-2. Once cloned, open up the project folder in your text editor and run the following command in terminal t instal all dependencies.
+2. Once cloned, open up the project folder in your text editor and run the following command in terminal to install all dependencies.
 
 ```
 npm install
